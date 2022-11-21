@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Railsproject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<script>var plugin_path = '/assets/plugins/';</script>
+
+     <div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+				<!-- TOP NAV -->
+				<header id="topNav" class = "bg-white">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="#top">
+							<%# <img src="/assets/images/R2.png" alt="" /> %>
+              <%=image_tag "R2", class: "logo float-left scrollTo", alt:""%>
+						</a>
+						
+						<!-- 
+							Top Nav 
+						
+						-->
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+						
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active">
+                  <!-- HOME -->
+										<a class = "scrollTo" href="#top">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<a href="/index#services">
+											SERVICES
+										</a>
+									</li>
+									<li><!-- WORK -->
+										<a href="/index#work">
+											WORK
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="/index#news">
+											NEWS
+										</a>
+									</li>
+							
+
+									<li>
+                  <!-- CLIENTS -->
+										<a href="/index#clients">
+
+											CLIENTS
+
+										</a>
+									</li>
+									<!--QUOTE-->
+									
+									<li>
+                  <%# ch HREF quoteform ROUTE done %>
+										<%# <a class="external" href="quoteform.html.erb"> %>
+                  
+                    <%# <%= link_to 'QUOTE FORM', quoteform_path, class:"external" %> 
+											
+										</a>
+									</li>
+									
+									<li><!-- CONTACT -->
+										<a href="#contact">
+											CONTACT
+										</a>
+									</li>
+									<% if user_signed_in? %>
+										<li><!-- SIGN OUT -->
+											<a <%=link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+												
+											</a>
+										</li>
+										<li><!-- EDIT-->
+											<a href=<%= edit_user_registration_path%> >
+												EDIT
+											</a>
+										</li>
+									<%else %>
+										<li><!-- SIGN IN -->
+											<a href=<%=new_user_session_path%> >
+												SIGN IN
+											</a>
+										</li>
+										<li><!-- SIGN UP -->
+											<a href=<%= new_user_registration_path%> >
+												SIGN UP
+											</a>
+										</li>
+										
+										<li><!-- ADMIN LOGIN -->
+											<a href="/admin">
+												ADMIN LOGIN
+											</a>
+										</li>
+									<% end %>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+  </head>
+
+  <body>
+ 
+    <%= yield %>
+	<p class="notice"><%=notice %></p>
+	<p class="alert"><%=alert %></p>
+
+	<!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								Whether it is a home or business, Rocket Elevators will get the job done. 
+							</p>
+							<h2>(800) 123-4567</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-success" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Rocket Elevators LTD
+					</div>
+				</div>
+
+			</footer>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<html>
+<head>
+
+    <style>
+
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      .map {
+        height: 80vh;
+        width: 90vh;
+        margin: 0 auto;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      /* html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      } */
+    </style>
+    
+     <script>
+
+     let coords = [];
+     let street, client_name, numb_of_batteries,numb_of_columns, numb_of_elevators, fname_of_tech_contact  
+
+    <% Building.all.each do |building| 
+        numbColumns = 0
+        numbElev = 0
+        numbBat = building.batteries.count
+        
+
+
+        building.batteries.all.each do |bat|
+          numbColumns += bat.columns.count
+          
+          bat.columns.all.each do |col|
+            numbElev += col.elevators.count
+
+            end
+          end
+
+      %>
+
+    street = "<%= building.address.number_and_street %>"
+    client_name = "<%=building.customer.contact_full_name %>"
+    numb_of_batteries = "<%= numbBat%>"
+    numb_of_columns = "<%= numbColumns%>"
+    numb_of_elevators = "<%= numbElev%>"
+    fname_of_tech_contact = "<%=building.tech_contact_full_name%>"
+     
+
+      coords.push([
+        <%= building.address.lat.to_f %>,
+        <%= building.address.lng.to_f %>,
+        {
+        street,
+        
+        client_name,
+        numb_of_batteries,
+        numb_of_columns,
+        numb_of_elevators,
+        fname_of_tech_contact,
+        }
+      ]);
+
+    <% end %>
+
+    //create the map with initMap
+      function initMap() {
+
+       const map = new google.maps.Map(document.querySelector(".map"), {
+          center: {lat: 39.8, lng: -98.5},
+          zoom: 5,
+        });
+
+      setMarker(map);
+    
+    function setMarker(map) {
+                //set up a for loop
+    for ( let i = 0; i < coords.length; i++){
+
+        const coordinates = coords[i];
+    
+      let marker = new google.maps.Marker({
+        position: { lat: coordinates[0], lng: coordinates[1] },
+        map: map,
+      });
+
+      let infoMarker = coordinates[2];
+      let infoContent = 
+            `<p> Location of building: ${infoMarker.street} </p>
+
+            <p>Client Name: ${infoMarker.client_name}</p>
+            <p>Number of Batteries: ${infoMarker.numb_of_batteries}</p>
+            <p>Number of Colums: ${infoMarker.numb_of_columns}</p>
+            <p>Number of Elevators: ${infoMarker.numb_of_elevators}</p>
+            <p>Tech Contact: ${infoMarker.fname_of_tech_contact} </p>`
+
+      const info = new google.maps.InfoWindow({
+        content: infoContent,
+      });  
+
+      marker.addListener("mouseover", () =>{
+        info.open({
+          anchor: marker,
+          map,
+          shouldFocus: false,
+        });
+        });
+
+     marker.addListener("mouseout", () =>{
+        info.close({
+          anchor: marker,
+          map,
+          shouldFocus: false,
+        });
+        });
+      
+
+
+
+
+
+    }
+    
+
+    }
+      }
+    window.initMap = initMap;
+        // initMap();
+
+
+    </script>
+  </head>
+  <body>
+    <div class="map"></div>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa_yaMDXuVMyeXEGCXgCR9Q5_JDx3lQL8&callback=initMap"async defer></script>
+  
+  </body>
+
+</html>
+
+
+

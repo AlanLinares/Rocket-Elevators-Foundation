@@ -1,0 +1,10 @@
+{
+  "name": "railsproject",
+  "private": true,
+  "dependencies": {
+    "@googlemaps/markerclusterer": "^2.0.13"
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.50.5"
+  }
+}

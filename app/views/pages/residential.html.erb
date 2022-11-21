@@ -1,0 +1,33 @@
+
+			<section id="overview">
+				<div class="container text-center">
+
+					<div class="row text-left">
+
+						<div class="col-sm-8">
+							<%# <img src="assets/images/apartments.jpg" style = "width: 100%; object-fit: cover;"alt="product image" /> %>
+                            <%= image_tag "apartments.jpg", width: 450, height:300,  fit: "cover", alt: "product image"%>
+						</div>
+
+						<div class="col-sm-4">
+							<h3 class="fw-300">Residential <span>Solutions</span></h3>
+						
+							<p>Whether it is your personal home or any size apartment building, we have designs for any need.</p>
+							<p> </p>
+							
+							<hr />
+							<div class="container">
+
+								<div class="text-center">
+									<h2 class="fs-40 fw-300"> Get a quote now.</h2>
+									<%# <a class="btn btn-primary btn-lg" href="index-quote.html">REQUEST A QUOTE ></a>  %>
+                                     <%= link_to 'QUOTE FORM', quoteform_path, class:"btn btn-primary btn-lg" %>
+
+								</div>
+			
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>

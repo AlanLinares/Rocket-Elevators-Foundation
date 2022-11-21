@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  number_of_floors_served: MyString
+  status: MyString
+  information: MyString
+  notes: MyString
+
+two:
+  type: 
+  number_of_floors_served: MyString
+  status: MyString
+  information: MyString
+  notes: MyString

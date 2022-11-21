@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_creation_date: MyString
+  company_name: MyString
+  company_address: MyString
+  contact_full_name: MyString
+  company_contact_phone: MyString
+  company_contact_email: MyString
+  company_description: MyString
+  service_tech_full_name: MyString
+  service_tech_phone: MyString
+  tech_manager_email: MyString
+
+two:
+  customer_creation_date: MyString
+  company_name: MyString
+  company_address: MyString
+  contact_full_name: MyString
+  company_contact_phone: MyString
+  company_contact_email: MyString
+  company_description: MyString
+  service_tech_full_name: MyString
+  service_tech_phone: MyString
+  tech_manager_email: MyString
