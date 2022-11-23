@@ -4,7 +4,7 @@ class InterventionController < ApplicationController
   
     def create
       intervention = Intervention.create!(
-          author_id: Employee.find(current_user.id),
+          author: Employee.find(current_user.id),
           employee_id: params[:employee],
           elevator_id: params[:elevator],
           column_id: params[:column], 
@@ -13,11 +13,15 @@ class InterventionController < ApplicationController
           customer_id: params[:customer],
           id: params[:id],
           result: "Incomplete",
-          report: params[:description],
+          report: params[:message],
           status: "Pending",
 
       
       )
+      userEmail = ""
+      companyName = ""
+      employeeName = ""
+      title = ""
 
       Customer.all.each do |c|
         if c.id == intervention.customer_id
@@ -27,10 +31,21 @@ class InterventionController < ApplicationController
        
       Employee.all.each do |e|
         if e.id == intervention.employee_id
-          employeeEmail = e.email
+          employeeName = e.first_name + " " + e.last_name
         end
       end
 
+      Employee.all.each do |e|
+        if e.id == intervention.author_id
+          userEmail = e.email
+        end
+      end
+
+      Employee.all.each do |e|
+        if e.id == intervention.author_id
+          title = e.title
+        end
+      end
     # Your freshdesk domain
    freshdesk_domain = "https://topcompany-support.freshdesk.com/api/v2/tickets"
 
@@ -43,9 +58,9 @@ class InterventionController < ApplicationController
    multipart_payload = { status: 2,
                          priority: 1,
                          type: 'Problem',
-                         email: 'alan.linares@gmail.com',
-                         description: "This is an intervention by #{intervention.author_id}. #{interventioncompanyName} has a problem in building #{intervention.building_id} with battery #{intervention.battery_id}
-                         , column #{intervention.column_id}, and/or elevator #{intervention.elevator_id}. Please assign the problem to #{employeeEmail}. There is a short description #{intervention.report}.",
+                         email: "#{userEmail}",
+                         description: "This is an intervention by #{title}. #{companyName} has a problem in building #{intervention.building_id} with battery #{intervention.battery_id}
+                         , column #{intervention.column_id}, and/or elevator #{intervention.elevator_id}. Please assign the problem to #{employeeName}. They provided a short description: #{intervention.report}.",
                          subject: 'Need Inspecting',
                          # attachments: [File.new('lead.attachment', 'rb')]
   }.to_json
