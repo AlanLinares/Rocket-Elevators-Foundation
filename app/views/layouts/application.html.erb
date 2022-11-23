@@ -82,17 +82,28 @@
 											CONTACT
 										</a>
 									</li>
+									<% if user_signed_in? && current_user.employee %>
+											<li><!-- INTERVENTION-->
+												<a href= /intervention >
+													INTERVENTION
+												</a>
+											</li>
+									<%end%>
+									<% if user_signed_in? && current_user.employee %>
+											<li><!-- ADMIN  -->
+											<a href="/admin">
+												BACK OFFICE
+											</a>
+										</li>
+									<% end %>
 									<% if user_signed_in? %>
 										<li><!-- SIGN OUT -->
 											<a <%=link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
 												
 											</a>
 										</li>
-										<li><!-- EDIT-->
-											<a href=<%= edit_user_registration_path%> >
-												EDIT
-											</a>
-										</li>
+										
+
 									<%else %>
 										<li><!-- SIGN IN -->
 											<a href=<%=new_user_session_path%> >
@@ -105,11 +116,7 @@
 											</a>
 										</li>
 										
-										<li><!-- ADMIN LOGIN -->
-											<a href="/admin">
-												ADMIN LOGIN
-											</a>
-										</li>
+										
 									<% end %>
 								</ul>
 

@@ -112,7 +112,7 @@ def create
                          '. They are needing '+ "#{quote.elevator_amount}" + ' elevators for a total price of ' + "#{quote.final_price}",
                          subject: 'New Feature',
                          # attachments: [File.new('lead.attachment', 'rb')]
-}.to_json
+  }.to_json
 
   #  freshdesk_api_path = 'api/v2/tickets'
 

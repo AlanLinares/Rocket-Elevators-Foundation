@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_datetime_of_intervention: 2022-11-21 13:41:01
+  end_datetime_of_intervention: 2022-11-21 13:41:01
+  result: MyString
+  report: MyString
+  status: MyString
+
+two:
+  start_datetime_of_intervention: 2022-11-21 13:41:01
+  end_datetime_of_intervention: 2022-11-21 13:41:01
+  result: MyString
+  report: MyString
+  status: MyString

@@ -1,0 +1,24 @@
+<form action="/intervention" method="post" class="text-center">
+<div class="row no-gutters wow slideInUp" data-wow-duration="1s">
+<div>
+    </br></br></br></br></br></br>
+  <div class="col-md-12 home-form">
+    <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "company_name"), prompt: "Customer" %>
+    <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "id"), prompt: "Building" %>
+    <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "id"), prompt: "Battery" %>
+    <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "id"), prompt: "Column" %>
+    <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "Elevator" %>
+    <%= select_tag "employee", options_from_collection_for_select(Employee.all, "id", "email"), prompt: "Employees" %>
+    <label for="description">Description </label>
+    <textarea required maxlength="10000" rows="8" class="form-control" name="message" id="message"></textarea>
+											
+    <%= submit_tag("Submit", class: "btn btn-primary") %>
+  </div>
+  </div>
+</div>
+</form>
+<%# if you wanted a search funtion 
+<div class="row" id="book_listing">
+  <%= render partial: "book_list", locals: {books: @books}
+</div> %>
+<%# :include_blank => 'None'  %>

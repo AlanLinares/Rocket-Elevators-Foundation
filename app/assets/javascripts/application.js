@@ -17,6 +17,7 @@
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require rails-ujs
+//= require intervention.js
 //= require activestorage
 //= require turbolinks
 //= require_tree .
