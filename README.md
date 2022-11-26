@@ -1,6 +1,6 @@
 # README
 
-This project is an extension of our Rocket Elevators page. Using a mixture of each team member's code we rebuilt a Rocket Elevator's webpage with Ruby on Rails and added database functionality using MySQL.
+This week's assignment is an extension of our full Rocket Elevators project. We've added an interventions table and web form for a user to add interventions to the table. Upon creating an intervention a ticket is created in FreshDesk for an admin to review. 
 
 ###Installation
 
@@ -35,13 +35,16 @@ https://gorails.com/setup/osx/12-monterey
 
 The installation guide for both Windows and Mac computers will also have a guide to configure your github account. 
  
-###Testing the webpage
+## Testing the webpage
 
-Once everything is installed and the MySQL service and Rails server have been started, you can go to localhost:3000 to test the webpage. 
+Once everything is installed and the MySQL service and Rails server have been started, you can go to localhost:3000 on any browser to test the webpage. 
+
+## Weekly Update
+With the addition of this week's code a user is now able to make interventions from the webpage. When a building's battery, column and/or elevator is not working, we can add the broken item to a list for management. A ticket is also created in FreshDesk for a manager. 
 
 
 
-###Authors
+## Author
 
-Alan Linares, Asche, Ryan Davis
+Alan Linares
      
